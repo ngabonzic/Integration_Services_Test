@@ -1,0 +1,31 @@
+name: Build and Deploy SSIS to Catalog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted # Must be a Windows runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSIS DevOps Tools
+        uses: jonlabelle/setup-ssis-devops-tools@v1
+
+      - name: Build SSIS Project
+        run: |
+          SSISBuild.exe / \
+          -p:"${{ github.workspace }}/YourSSISProjectFolder/YourProject.dtproj" \
+          -o:"${{ github.workspace }}/OutputBuild"
+
+      - name: Deploy ISPAC to SSISDB Catalog
+        run: |
+          SSISDeploy.exe \
+          -s:"${{ github.workspace }}/OutputBuild/YourProject.ispac" \
+          -d:"catalog;/SSISDB/YourFolderName;${{ secrets.SQL_SERVER_NAME }}" \
+          -u:"${{ secrets.SQL_USER }}" \
+          -p:"${{ secrets.SQL_PASSWORD }}"
