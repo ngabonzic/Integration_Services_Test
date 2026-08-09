@@ -31,8 +31,8 @@ jobs:
         run: echo Hello, world!
       - name: Run a one-line script
         run: echo "The context workspace path is ${{ github.workspace }}"
-      - name: Setup SSIS DevOps Tools
-        uses: jonlabelle/setup-ssis-devops-tools@v1
+      # - name: Setup SSIS DevOps Tools
+      #  uses: jonlabelle/setup-ssis-devops-tools@v1
         
 
       - name: Build SSIS Project
