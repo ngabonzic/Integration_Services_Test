@@ -34,7 +34,7 @@ jobs:
 
       - name: Build SSIS Project
         run: |
-          SSISBuild.exe / \
+          Build\SSISBuild.exe / \
           -p:"${{ github.workspace }}/Integration_Services_Test/Integration_Services_Test.dtproj" \
           -o:"${{ github.workspace }}/OutputBuild"
 
