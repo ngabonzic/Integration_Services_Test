@@ -41,13 +41,12 @@ jobs:
         run: echo "The context workspace path is ${{ github.workspace }}"
       - name: Setup SSIS DevOps Tools
         uses: jonlabelle/setup-ssis-devops-tools@v1
-        
-
+       
       - name: Build SSIS Project
         run: |
            SSISBuild.exe / \
-          -p:"${{ github.workspace }}/Integration_Services_Test.dtproj"\
-          -o:"${{ github.workspace }}/OutputBuild"
+            -p:"${{ github.workspace }}/Integration_Services_Test.dtproj"\
+            -o:"${{ github.workspace }}/OutputBuild"
        
 
       # Runs a set of commands using the runners shell
