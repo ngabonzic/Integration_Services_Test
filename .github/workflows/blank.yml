@@ -32,8 +32,8 @@ jobs:
         shell: pwsh
         run: |
          Write-Host "Running on version: $($PSVersionTable.PSVersion)"
-      - name: Install PowerShell Core
-        uses: actions/setup-powershell@v1 # Installs pwsh automatically
+      #- name: Install PowerShell Core
+      # uses: actions/setup-powershell@v1 # Installs pwsh automatically
       - name: Run Script
         shell: pwsh
         run: Write-Host "This works now!"
