@@ -28,6 +28,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
+      - name: Run PowerShell
+        shell: pwsh
+        run: |
+         Write-Host "Running on version: $($PSVersionTable.PSVersion)"
       - name: Install PowerShell Core
         uses: actions/setup-powershell@v1 # Installs pwsh automatically
       - name: Run Script
